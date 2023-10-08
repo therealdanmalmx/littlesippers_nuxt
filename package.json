@@ -13,6 +13,7 @@
     "@nuxt/devtools": "latest",
     "autoprefixer": "^10.4.16",
     "nuxt": "^3.7.4",
+    "nuxt3-leaflet": "^1.0.12",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.5",
