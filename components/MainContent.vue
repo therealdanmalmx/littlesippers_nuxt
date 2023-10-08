@@ -1,18 +1,19 @@
 <template>
   <main class="flex-grow">
-    <div style="height: 70vh;"></div>
-    <LMap
-        ref="map"
-        :zoom="zoom"
-        :center="[47.21322, -1.559482]"
-    >
-  <LTileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
-    layer-type="base"
-    name="OpenStreetMap"
-  />
-</LMap>
+    <div style="height: 70vh;">
+        <LMap
+            ref="map"
+            :zoom="zoom"
+            :center="[47.21322, -1.559482]"
+        >
+            <LTileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
+                layer-type="base"
+                name="OpenStreetMap"
+            />
+        </LMap>
+    </div>
     <div class="bg-white p-6" style="height: 30vh;">
       <div class="h-full flex justify-center items-center">
         <input type="text" placeholder="Enter location..." class="border rounded-l px-4 py-2 w-1/2">
