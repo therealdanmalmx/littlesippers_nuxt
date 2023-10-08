@@ -9,11 +9,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    // Simple usage
-    'nuxt3-leaflet',
-
-    // With options
-    // ['nuxt-leaflet'],
- ]
+    'nuxt3-leaflet'
+  ]
 
 });
