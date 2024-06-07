@@ -9,10 +9,12 @@
   import MainContent from "../components/MainContent.vue";
   import FooterBar from "../components/FooterBar.vue";
 
-  export default {
-    components: {
-      MainContent,
-      FooterBar,
-    },
-  };
-  </script>
+export default {
+  components: {
+    MainContent,
+    FooterBar,
+  },
+  
+};  
+
+</script>

@@ -10,6 +10,19 @@ export default defineNuxtConfig({
   },
   modules: [
     'nuxt3-leaflet'
-  ]
+  ],
+
+  app: {
+    head: {
+      script: [
+        {
+            src: `https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`,
+            async: true,
+            defer: true,
+          }
+      ]
+    },
+  }
+
 
 });
