@@ -37,7 +37,7 @@ export default {
         const lng = ref(null);
 
         const addressToLatLng = async (address) => {
-            const apiKey = process.env.MAP_KEY;
+            const apiKey = 'AIzaSyC5oFI5rnbE39s-DlfwLSd0_x9Z3kWWGio' ||process.env.MAP_KEY;
             const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
             try {
