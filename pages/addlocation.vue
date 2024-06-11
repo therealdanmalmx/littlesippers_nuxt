@@ -15,7 +15,7 @@
                 <input type="text" name="latitude" placeholder="latitude" id="lat" class="w-1/2 text-black uppercase p-4 border-2 border-black" />
                 <input type="text" name="longitude" placeholder="longitude" id="lng" class="w-1/2 text-black uppercase p-4 border-2 border-black" />
             </div>
-            <p class="text-black text-2xl text-center uppercase">What amenities exist? Click all that apply</p>
+            <p class="text-black text-2xl text-center uppercase">What options exist? Click all that apply</p>
             <div class="flex justify-between mt-12">
                 <label htmlFor="changeroom">
                     <input type="checkbox" :value="checked" name="changeroom" id="changeroom" @change="toggleIcon('changeroom')" />
