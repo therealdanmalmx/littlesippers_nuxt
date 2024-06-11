@@ -1,204 +1,127 @@
 <template>
-    <div class="p-20 border-2 border-black w-2/3 my-12 mx-auto">
-        <h1 class="new-location-heading">Add a new location</h1>
-        <form id="new-location-form">
-            <input type="text" name="name" placeholder="name of establishment" id="name"/>
-            <input type="text" name="street" placeholder="street" id="street" />
-            <div class="new-location-city">
-                <input type="text" name="postalcode" placeholder="postal code" id="postalCode"/>
-                <input type="text" name="city" placeholder="city" id="city" />
+    <h1 class="text-3xl font-bold uppercase text-center my-8 text-black">Add a new location</h1>
+    <div class="p-12 border-2 border-black w-2/3 mx-auto space-y-4">
+        <p class="w-2/3 text-center mx-auto">Start typing the name of the establishment and chose the one from the list - the rest of the information will be filled out.</p>
+        <form id="new-location-form" class="flex flex-col w-3/4 space-y-6 mx-auto">
+            <div class="flex flex-col w-full mx-auto space-y-2">
+                <input type="text" name="name" placeholder="name of establishment" id="name" class="capitalize text-black p-4 border-2 border-black" />
+                <input type="text" name="street" placeholder="street" id="street" class="text-black uppercase p-4 border-2 border-black" />
             </div>
-            <div class="new-location-latlng">
-                <input type="text" name="latitude" placeholder="latitude" id="lat"/>
-                <input type="text" name="longitude" placeholder="longitude" id="lng" />
+            <div class="flex space-x-4">
+                <input type="text" name="postalcode" placeholder="postal code" id="postalCode" class="w-2/5 text-black uppercase p-4 border-2 border-black" />
+                <input type="text" name="city" placeholder="city" id="city" class="w-3/5 text-black uppercase p-4 border-2 border-black" />
             </div>
-            <p class="new-location-icons-heading">What amenities exist? Click all that apply</p>
-            <div class="new-location-icons">
-                <label class="new-location-icons-img" htmlFor="changeroom">
-                    <input type="checkbox" value='changeroom' name="changeroom" id="changeroom" />
-                    <img class="new-location-icon" src="/icons/changeroom.png" alt="changeroom" />
-                    <p class="new-location-icons-text">Changeroom</p>
-                    <span class="new-location-icons-underline"></span>
+            <div class="flex space-x-4">
+                <input type="text" name="latitude" placeholder="latitude" id="lat" class="w-1/2 text-black uppercase p-4 border-2 border-black" />
+                <input type="text" name="longitude" placeholder="longitude" id="lng" class="w-1/2 text-black uppercase p-4 border-2 border-black" />
+            </div>
+            <p class="text-black text-2xl text-center uppercase">What amenities exist? Click all that apply</p>
+            <div class="flex justify-between mt-12">
+                <label htmlFor="changeroom">
+                    <input type="checkbox" :value="checked" name="changeroom" id="changeroom" @change="toggleIcon('changeroom')" />
+                    <img :src="selectedItems.includes('changeroom') ? '../icons/changeroom_checked.svg' : '../icons/changeroom.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="changeroom"  />
+                    <p>Changeroom</p>
                 </label>
-                <label class="new-location-icons-img" htmlFor="duck">
-                    <input type="checkbox" value='duck' name="duck" id="duck" />
-                    <img class="new-location-icon" src="/icons/duck.png" alt="duck" />
-                    <p class="new-location-icons-text">Toys</p>
+
+
+                <label htmlFor="duck">
+                    <input type="checkbox" value='duck' name="duck" id="duck" @change="toggleIcon('duck')"/>
+                    <img :src="selectedItems.includes('duck') ? '../icons/duck_checked.svg' : '../icons/duck.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="duck" />
+                    <p>Toys</p>
                 </label>
-                <label class="new-location-icons-img" htmlFor="literature">
-                    <input type="checkbox" value='literature' name="literature" id="literature" />
-                    <img class="new-location-icon" src="/icons/literature.png" alt="literature" />
-                    <p class="new-location-icons-text">Books</p>
+                <label htmlFor="literature">
+                    <input type="checkbox" value='literature' name="literature" id="literature" @change="toggleIcon('literature')" />
+                    <img :src="selectedItems.includes('literature') ? '../icons/literature_checked.svg' : '../icons/literature.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="literature" />
+                    <p>Books</p>
                 </label>
-                <label class="new-location-icons-img" htmlFor="playground">
-                    <input type="checkbox" value='playground' name="playground" id="playground" />
-                    <img class="new-location-icon" src="/icons/playground.png" alt="playground" />
-                    <p class="new-location-icons-text">Playground</p>
+                <label htmlFor="playground">
+                    <input type="checkbox" value='playground' name="playground" id="playground" @change="toggleIcon('playground')" />
+                    <img :src="selectedItems.includes('playground') ? '../icons/playground_checked.svg' : '../icons/playground.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="playground" />
+                    <p>Playground</p>
                 </label>
-                <label class="new-location-icons-img" htmlFor="playoutside">
-                    <input type="checkbox" value='playoutside' name="playoutside" id="playoutside" />
-                    <img class="new-location-icon" src="/icons/playoutside.png" alt="playoutside" />
-                    <p class="new-location-icons-text">Garden</p>
+                <label htmlFor="playoutside">
+                    <input type="checkbox" value='playoutside' name="playoutside" id="playoutside" @click="toggleCheck('playoutside')" @change="toggleIcon('playoutside')" />
+                    <img :src="selectedItems.includes('playoutside') ? '../icons/playoutside_checked.svg' : '../icons/playoutside.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="playoutside" />
+                    <p>Garden</p>
                 </label>
             </div>
 
-            <button @click.prevent="addNewLocation" class="new-location-button" type="submit">
+            <button @click.prevent="addNewLocation" class="w-full px-2 py-4 border-2 uppercase rounded-full" type="submit">
                 Submit new location 
             </button>
         </form>
     </div>
 </template>
 <script>
+import { ref, onMounted, onUpdated } from 'vue'
 import autocomplete from '../components/autoComplete';
+import changeroom from '@/icons/changeroom.svg';
+import changeroom_checked from '@/public/icons/changeroom_checked.svg';
 
 export default {
 
     setup() {
+        let checked = ref(false);
+        const selectedItems = ref([]);
         const addNewLocation = () => {
             console.log('add new location')
         }
 
+        const toggleIcon = (itemName) => {
+            checked.value = !checked.value;
+            const index = selectedItems.value.indexOf(itemName);
+            if (index !== -1) {
+                // Item is checked, remove it
+                selectedItems.value.splice(index, 1);
+            } else {
+                // Item is unchecked, add it
+                selectedItems.value.push(itemName);
+            }
+            console.log(selectedItems)
+            console.log('selectedItems', selectedItems.value.includes(itemName))
+        }
+
+        const toggleCheck = (itemName) => {
+            console.log(toggleCheck)
+        
+            console.log({itemName})
+        }
+
+        const checkIcon =(itemName) => {
+            return selectedItems.value.includes(itemName);
+        }
+
+
         const initAutocomplete = () => {
           autocomplete(
-            document.getElementById('name'),
-            document.getElementById('street'),
-            document.getElementById('postalCode'),
-            document.getElementById('city'),
-            document.getElementById('lat'),
-            document.getElementById('lng'),
-        );
+                document.getElementById('name'),
+                document.getElementById('street'),
+                document.getElementById('postalCode'),
+                document.getElementById('city'),
+                document.getElementById('lat'),
+                document.getElementById('lng'),
+            );
         }
 
         onMounted(() => {
             initAutocomplete();
-        })  
+        })
 
         return {
-            addNewLocation
+            addNewLocation,
+            toggleIcon,
+            checked, 
+            changeroom,
+            changeroom_checked,
+            toggleCheck,
+            checkIcon,
+            selectedItems
         }
     }
     
 }
 </script>
 <style scoped>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #6DB1BF;
-}
-.new-location {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 50%;
-}
-
-#new-location-form {
-    display: flex;
-    flex-direction: column;
-}
-
-input {
-    margin-bottom: 1rem;
-    background-color: #C1CAD6;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    outline: none;
-    color: #FFF;
-}
-
-input[type="text"]::placeholder {
-    text-transform: uppercase;
-    color: #FFF;
-}
-
-.new-location-city,
-.new-location-latlng {
-    display: flex;
-    justify-content: space-between;
-}
-
-input[name="postalcode"] {
-    width: 34%
-}
-
-input[name="city"] {
-    width: 64%
-}
-
-input[name="latitude"],
-input[name="longitude"] {
-    width: 49%;
-}
-
-.new-location-heading {
-    text-align: center;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    color: #FFF;
-}
-
-.new-location-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.new-location-icons {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
-
-.new-location-icons-heading {
-    margin-top: 2rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    color: #EEE;
-}
-
-.new-location-icons-img {
-    margin-top: 1.5rem;
-    height: 100px;
-    width: 100px;
-    cursor: pointer;
-}
-.new-location-icon {
-    cursor: pointer;
-}
-
-.new-location-icons-text {
-    margin-top: 0.3rem;
-    text-align: center;
-    padding-bottom: 0.3rem;
-}
-
-div img:not(.footer-logo-img) {
-    display: block;
-    margin-top: 1.5rem;
-    margin: 0 auto;
-    max-height: 3.125rem;
-    height: 2.8125rem;
-}
-
-.new-location-button {
-    padding: 1rem 2rem;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 50px;
-    color: #6DB1BF;
-    background-color: #C1DDD8;
-}
 
 /* Custom checkbox */
 input[type='checkbox'] {
