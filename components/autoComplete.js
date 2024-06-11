@@ -6,9 +6,10 @@ const autocomplete = (inputName, inputStreet, inputPostalCode, inputCity, inputL
   
     dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
+      console.log({place});
       inputName.value = place.name;
       inputStreet.value = place.formatted_address;
-      inputPostalCode.value = place.address_components[6].long_name;
+      inputPostalCode.value = place.address_components[5].long_name ||place.address_components[6].long_name;
       inputCity.value = place.address_components[3].long_name;
       inputLat.value = place.geometry.location.lat();
       inputLng.value = place.geometry.location.lng();

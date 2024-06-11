@@ -20,29 +20,29 @@
                 <label htmlFor="changeroom">
                     <input type="checkbox" :value="checked" name="changeroom" id="changeroom" @change="toggleIcon('changeroom')" />
                     <img :src="selectedItems.includes('changeroom') ? '../icons/changeroom_checked.svg' : '../icons/changeroom.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="changeroom"  />
-                    <p>Changeroom</p>
+                    <p :style="{ color: selectedItems.includes('changeroom') ? '#000000' : '#CCCCCC' }">Changeroom</p>
                 </label>
 
 
                 <label htmlFor="duck">
                     <input type="checkbox" value='duck' name="duck" id="duck" @change="toggleIcon('duck')"/>
                     <img :src="selectedItems.includes('duck') ? '../icons/duck_checked.svg' : '../icons/duck.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="duck" />
-                    <p>Toys</p>
+                    <p :style="{ color: selectedItems.includes('duck') ? '#000000' : '#CCCCCC' }">Toys</p>
                 </label>
                 <label htmlFor="literature">
                     <input type="checkbox" value='literature' name="literature" id="literature" @change="toggleIcon('literature')" />
                     <img :src="selectedItems.includes('literature') ? '../icons/literature_checked.svg' : '../icons/literature.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="literature" />
-                    <p>Books</p>
+                    <p :style="{ color: selectedItems.includes('literature') ? '#000000' : '#CCCCCC' }">Books</p>
                 </label>
                 <label htmlFor="playground">
                     <input type="checkbox" value='playground' name="playground" id="playground" @change="toggleIcon('playground')" />
                     <img :src="selectedItems.includes('playground') ? '../icons/playground_checked.svg' : '../icons/playground.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="playground" />
-                    <p>Playground</p>
+                    <p :style="{ color: selectedItems.includes('playground') ? '#000000' : '#CCCCCC' }">Playground</p>
                 </label>
                 <label htmlFor="playoutside">
-                    <input type="checkbox" value='playoutside' name="playoutside" id="playoutside" @click="toggleCheck('playoutside')" @change="toggleIcon('playoutside')" />
+                    <input type="checkbox" value='playoutside' name="playoutside" id="playoutside" @change="toggleIcon('playoutside')" />
                     <img :src="selectedItems.includes('playoutside') ? '../icons/playoutside_checked.svg' : '../icons/playoutside.svg'" class="max-h-16 h-12 mx-auto cursor-pointer" alt="playoutside" />
-                    <p>Garden</p>
+                    <p :style="{ color: selectedItems.includes('playoutside') ? '#000000' : '#CCCCCC' }">Garden</p>
                 </label>
             </div>
 
@@ -57,14 +57,42 @@ import { ref, onMounted, onUpdated } from 'vue'
 import autocomplete from '../components/autoComplete';
 import changeroom from '@/icons/changeroom.svg';
 import changeroom_checked from '@/public/icons/changeroom_checked.svg';
+import { list } from 'postcss';
 
 export default {
 
     setup() {
         let checked = ref(false);
         const selectedItems = ref([]);
+
         const addNewLocation = () => {
-            console.log('add new location')
+            const name = document.getElementById('name').value;
+            const street = document.getElementById('street').value;
+            const postalCode = document.getElementById('postalCode').value;
+            const city = document.getElementById('city').value;
+            const lat = document.getElementById('lat').value;
+            const lng = document.getElementById('lng').value;
+            const listItems = selectedItems.value;
+
+            console.log({
+                name,
+                street,
+                postalCode,
+                city,
+                lat,
+                lng,
+                listItems
+            })
+            
+            return {
+                name,
+                street,
+                postalCode,
+                city,
+                lat,
+                lng,
+                listItems
+            }          
         }
 
         const toggleIcon = (itemName) => {
@@ -77,20 +105,8 @@ export default {
                 // Item is unchecked, add it
                 selectedItems.value.push(itemName);
             }
-            console.log(selectedItems)
-            console.log('selectedItems', selectedItems.value.includes(itemName))
+            console.log(selectedItems.value)
         }
-
-        const toggleCheck = (itemName) => {
-            console.log(toggleCheck)
-        
-            console.log({itemName})
-        }
-
-        const checkIcon =(itemName) => {
-            return selectedItems.value.includes(itemName);
-        }
-
 
         const initAutocomplete = () => {
           autocomplete(
@@ -112,9 +128,6 @@ export default {
             toggleIcon,
             checked, 
             changeroom,
-            changeroom_checked,
-            toggleCheck,
-            checkIcon,
             selectedItems
         }
     }
