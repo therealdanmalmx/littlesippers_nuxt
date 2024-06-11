@@ -1,5 +1,5 @@
 <template>
-    <div class="new-location">
+    <div class="p-20 border-2 border-black w-2/3 my-12 mx-auto">
         <h1 class="new-location-heading">Add a new location</h1>
         <form id="new-location-form">
             <input type="text" name="name" placeholder="name of establishment" id="name"/>
