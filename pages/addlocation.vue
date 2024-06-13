@@ -16,6 +16,7 @@
           id="name"
           class="pointer-events-auto border-b-4 outline-none bg-gray-100 p-4 text-black"
         />
+        </div>
         <input
           type="text"
           name="street"
@@ -24,7 +25,6 @@
           class="p-4 capitalize text-black bg-gray-50"
           disabled
         />
-      </div>
       <div class="flex space-x-4">
         <input
           type="text"
@@ -82,7 +82,7 @@
             class="mx-auto h-12 max-h-16 cursor-pointer"
             alt="changeroom"
           />
-          <p>Changeroom</p>
+          <p :style="{color: xzy('changeroom')}">Changeroom</p>
         </label>
 
         <label htmlFor="duck">
@@ -174,7 +174,7 @@
   </div>
 </template>
 <script>
-import { ref, onMounted, onUpdated } from "vue";
+import { ref, onMounted, onUpdated, computed } from "vue"; // Add computed import statement
 import autocomplete from "../components/autoComplete";
 import changeroom from "@/icons/changeroom.svg";
 import changeroom_checked from "@/public/icons/changeroom_checked.svg";
@@ -196,6 +196,10 @@ export default {
         selectedItems.value.push(itemName);
       }
     };
+
+    const xzy = (itemName) => {
+        return selectedItems.value.includes(itemName) ? 'text-gray-300' : 'text-gray-900'
+    }
 
     const capitalizeFirstLetter = (str) => {
         const words = str.split(" ");
@@ -228,6 +232,7 @@ export default {
       changeroom_checked,
       selectedItems,
       capitalizeFirstLetter,
+      xzy,
     };
   },
 };
