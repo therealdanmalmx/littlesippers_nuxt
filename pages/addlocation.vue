@@ -12,16 +12,16 @@
         <input
           type="text"
           name="name"
-          placeholder="name of establishment"
+          :placeholder="capitalizeFirstLetter('name of establishment')"
           id="name"
-          class="pointer-events-auto border-2 border-black p-4 capitalize text-black"
+          class="pointer-events-auto border-b-4 outline-none bg-gray-500/10 p-4 text-black"
         />
         <input
           type="text"
           name="street"
           placeholder="street"
           id="street"
-          class="border-2 border-black p-4 capitalize text-black"
+          class="p-4 capitalize text-black"
           disabled
         />
       </div>
@@ -31,7 +31,7 @@
           name="postalcode"
           placeholder="postal code"
           id="postalCode"
-          class="w-2/5 border-2 border-black p-4 capitalize text-black"
+          class="w-2/5 p-4 capitalize text-black"
           disabled
         />
         <input
@@ -39,7 +39,7 @@
           name="city"
           placeholder="city"
           id="city"
-          class="w-3/5 border-2 border-black p-4 capitalize text-black"
+          class="w-3/5 p-4 capitalize text-black"
           disabled
         />
       </div>
@@ -49,7 +49,7 @@
           name="latitude"
           placeholder="latitude"
           id="lat"
-          class="w-1/2 border-2 border-black p-4 uppercase text-black"
+          class="w-1/2 p-4 capitalize text-black"
           disabled
         />
         <input
@@ -57,7 +57,7 @@
           name="longitude"
           placeholder="longitude"
           id="lng"
-          class="w-1/2 border-2 border-black p-4 uppercase text-black"
+          class="w-1/2 p-4 capitalize text-black"
           disabled
         />
       </div>
@@ -195,9 +195,15 @@ export default {
       } else {
         selectedItems.value.push(itemName);
       }
-      console.log(selectedItems);
-      console.log("selectedItems", selectedItems.value.includes(itemName));
     };
+
+    const capitalizeFirstLetter = (str) => {
+        const words = str.split(" ");
+        if (words.length > 1) {
+            words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+            }
+        return words.join(" ");
+    }
 
     const initAutocomplete = () => {
       autocomplete(
@@ -221,6 +227,7 @@ export default {
       changeroom,
       changeroom_checked,
       selectedItems,
+      capitalizeFirstLetter,
     };
   },
 };

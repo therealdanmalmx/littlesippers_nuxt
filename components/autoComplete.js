@@ -13,8 +13,10 @@ const autocomplete = (
 
   dropdown.addListener("place_changed", () => {
       const place = dropdown.getPlace();
+      console.log({place})
       const streetAddress = place.formatted_address.split(",")[0].trim();
-      const postalCode = !place.address_components[6] ? place.address_components[5].long_name : place.address_components[6].long_name.split(" ") ? place.address_components[6].long_name : place.address_components[5].long_name;
+      const postalCode = !place.address_components[6] ? place.address_components[5].long_name : place.address_components[6].short_name === 'US' ? place.address_components[7].long_name : place.address_components[6].long_name.split(" ") ? place.address_components[6].long_name : place.address_components[6].short_name === 'US' && place.address_components[7].long_name;
+      console.log({postalCode})
       inputName.value = place.name;
       inputStreet.value = streetAddress;
       inputPostalCode.value = postalCode;
