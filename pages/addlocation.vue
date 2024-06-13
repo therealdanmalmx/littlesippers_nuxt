@@ -1,15 +1,15 @@
 <template>
     <h1 class="text-3xl font-bold uppercase text-center my-8 text-black">Add a new location</h1>
     <div class="p-12 border-2 border-black w-2/3 mx-auto space-y-4">
-        <p class="w-2/3 text-center mx-auto">Start typing the name of the establishment and chose the one from the list - the rest of the information will be filled out.</p>
+        <p class="text-balance w-2/3 text-center mx-auto">Start typing the name of the establishment and chose the one from the list <span class="text-balance block">- the rest of the information will be filled out automatically.</span></p>
         <form id="new-location-form" class="flex flex-col w-3/4 space-y-6 mx-auto">
             <div class="flex flex-col w-full mx-auto space-y-2">
                 <input type="text" name="name" placeholder="name of establishment" id="name" class="capitalize text-black p-4 border-2 border-black" />
-                <input type="text" name="street" placeholder="street" id="street" class="text-black uppercase p-4 border-2 border-black" />
+                <input type="text" name="street" placeholder="street" id="street" class="text-black capitalize p-4 border-2 border-black" />
             </div>
             <div class="flex space-x-4">
-                <input type="text" name="postalcode" placeholder="postal code" id="postalCode" class="w-2/5 text-black uppercase p-4 border-2 border-black" />
-                <input type="text" name="city" placeholder="city" id="city" class="w-3/5 text-black uppercase p-4 border-2 border-black" />
+                <input type="text" name="postalcode" placeholder="postal code" id="postalCode" class="w-2/5 text-black capitalize p-4 border-2 border-black" />
+                <input type="text" name="city" placeholder="city" id="city" class="w-3/5 text-black capitalize p-4 border-2 border-black" />
             </div>
             <div class="flex space-x-4">
                 <input type="text" name="latitude" placeholder="latitude" id="lat" class="w-1/2 text-black uppercase p-4 border-2 border-black" />
