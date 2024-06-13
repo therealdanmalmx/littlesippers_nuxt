@@ -3,9 +3,9 @@
     Add a new location
   </h1>
   <div class="mx-auto w-2/3 space-y-4 border-2 border-black p-12">
-    <p class="mx-auto w-2/3 text-center">
+    <p class="mx-auto w-2/3 text-balanced text-center">
       Start typing the name of the establishment and chose the one from the list
-      - the rest of the information will be filled out.
+      <span class="text-balanced block">- the rest of the information will be filled out automatically.</span>
     </p>
     <form id="new-location-form" class="mx-auto flex w-3/4 flex-col space-y-6">
       <div class="mx-auto flex w-full flex-col space-y-2">
