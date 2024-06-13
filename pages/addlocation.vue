@@ -22,6 +22,7 @@
           placeholder="street"
           id="street"
           class="border-2 border-black p-4 capitalize text-black"
+          disabled
         />
       </div>
       <div class="flex space-x-4">
@@ -31,6 +32,7 @@
           placeholder="postal code"
           id="postalCode"
           class="w-2/5 border-2 border-black p-4 capitalize text-black"
+          disabled
         />
         <input
           type="text"
@@ -38,6 +40,7 @@
           placeholder="city"
           id="city"
           class="w-3/5 border-2 border-black p-4 capitalize text-black"
+          disabled
         />
       </div>
       <div class="flex space-x-4">
@@ -47,6 +50,7 @@
           placeholder="latitude"
           id="lat"
           class="w-1/2 border-2 border-black p-4 uppercase text-black"
+          disabled
         />
         <input
           type="text"
@@ -54,6 +58,7 @@
           placeholder="longitude"
           id="lng"
           class="w-1/2 border-2 border-black p-4 uppercase text-black"
+          disabled
         />
       </div>
       <p class="text-center text-2xl uppercase text-black">
