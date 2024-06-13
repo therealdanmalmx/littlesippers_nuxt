@@ -14,14 +14,14 @@
           name="name"
           :placeholder="capitalizeFirstLetter('name of establishment')"
           id="name"
-          class="pointer-events-auto border-b-4 outline-none bg-gray-500/10 p-4 text-black"
+          class="pointer-events-auto border-b-4 outline-none bg-gray-100 p-4 text-black"
         />
         <input
           type="text"
           name="street"
           placeholder="street"
           id="street"
-          class="p-4 capitalize text-black"
+          class="p-4 capitalize text-black bg-gray-50"
           disabled
         />
       </div>
@@ -31,7 +31,7 @@
           name="postalcode"
           placeholder="postal code"
           id="postalCode"
-          class="w-2/5 p-4 capitalize text-black"
+          class="w-2/5 p-4 capitalize text-black bg-gray-50"
           disabled
         />
         <input
@@ -39,7 +39,7 @@
           name="city"
           placeholder="city"
           id="city"
-          class="w-3/5 p-4 capitalize text-black"
+          class="w-3/5 p-4 capitalize text-black bg-gray-50"
           disabled
         />
       </div>
@@ -49,7 +49,7 @@
           name="latitude"
           placeholder="latitude"
           id="lat"
-          class="w-1/2 p-4 capitalize text-black"
+          class="w-1/2 p-4 capitalize text-black bg-gray-50"
           disabled
         />
         <input
@@ -57,7 +57,7 @@
           name="longitude"
           placeholder="longitude"
           id="lng"
-          class="w-1/2 p-4 capitalize text-black"
+          class="w-1/2 p-4 capitalize text-black bg-gray-50"
           disabled
         />
       </div>
